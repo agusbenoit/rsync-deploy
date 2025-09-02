@@ -1,0 +1,36 @@
+name: 'Rsync Deploy Action'
+description: 'Deploys code to a remote server using rsync over SSH'
+author: 'Agustín Benoit'
+inputs:
+  ssh_private_key:
+    description: 'SSH private key'
+    required: true
+  ssh_host:
+    description: 'Remote SSH host (IP o FQDN)'
+    required: true
+  ssh_user:
+    description: 'Remote SSH username'
+    required: true
+  remote_path:
+    description: 'Path on the remote server to deploy the files to'
+    required: true
+  source:
+    description: 'Local path to sync (default: ./)'
+    required: false
+    default: './'
+  ssh_port:
+    description: 'SSH port (default: 22)'
+    required: false
+    default: '22'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.ssh_private_key }}
+    - ${{ inputs.ssh_host }}
+    - ${{ inputs.ssh_user }}
+    - ${{ inputs.remote_path }}
+    - ${{ inputs.source }}
+    - ${{ inputs.ssh_port }}
+
