@@ -11,6 +11,7 @@ GitHub Action to deploy files to a remote server using `rsync` + `ssh`.
 | ssh_user         | Remote SSH user                          | ✅       |
 | remote_path      | Destination path on the remote server    | ✅       |
 | source           | Local path to sync (default: `./`)       | ❌       |
+| ssh_port         | SSH port (default: `22`)                 | ❌       |
 
 ## 🧪 Usage Example
 
